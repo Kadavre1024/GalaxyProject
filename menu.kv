@@ -1,0 +1,47 @@
+#: import utils kivy.utils
+
+<ButtonLevel@Button>:
+    size: self.size
+    pos: self.pos
+    font_size: dp(30)
+    font_name: 'fonts/Eurostile.ttf'
+    background_normal: ""
+    background_color: 1, .3, .4, .8
+
+<MenuWidget>:
+
+    canvas.before:
+        Color:
+            rgba: (0,0,0,.8)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    BoxLayout:
+        orientation: "vertical"
+        Label :
+            font_size: dp(60)
+            font_name: 'fonts/Sackers-Gothic-Std-Light.ttf'
+            text: root.parent.menu_title
+            #pos_hint: { "center_x": .5, "center_y": .6 }
+            #size_hint: 1, None
+            text_size: self.size
+            valign: "bottom"
+            halign: "center"
+        BoxLayout:
+            pos_hint: { "center_x": .5, "center_y": .3 }
+            size_hint: .3, 1
+            orientation: "vertical"
+            padding: 0, 50, 0, 50
+            spacing: 20
+            ButtonLevel:
+                text: root.parent.menu_button_title + " EASY"
+                on_press: root.parent.on_click_start_game("easy")
+            ButtonLevel:
+                text: root.parent.menu_button_title + " MEDIUM"
+                on_press: root.parent.on_click_start_game("medium")
+            ButtonLevel:
+                text: root.parent.menu_button_title + " HARD"
+                on_press: root.parent.on_click_start_game("hard")
+            ButtonLevel:
+                text: "EXIT"
+                on_press: app.stop()
